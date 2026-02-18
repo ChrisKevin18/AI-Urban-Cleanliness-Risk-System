@@ -17,8 +17,25 @@ from xgboost import XGBClassifier
 model = XGBClassifier(use_label_encoder=False, eval_metric="logloss")
 model.fit(X, y)
 
+from sklearn.metrics import classification_report
+
+y_pred = model.predict(X)
+print(classification_report(y, y_pred))
+
 
 # Save model
 joblib.dump(model, "../models/trained_model.pkl")
 
 print("Model trained and saved successfully!")
+
+from sklearn.metrics import classification_report, confusion_matrix
+import matplotlib.pyplot as plt
+import seaborn as sns
+
+y_pred = model.predict(X)
+
+print(classification_report(y, y_pred))
+
+cm = confusion_matrix(y, y_pred)
+sns.heatmap(cm, annot=True)
+plt.savefig("models/confusion_matrix.png")

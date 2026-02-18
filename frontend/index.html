@@ -1,0 +1,27 @@
+\<!DOCTYPE html>
+<html>
+<head>
+    <title>Urban Cleanliness Risk Dashboard</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css"/>
+</head>
+<body>
+
+<h1>AI Urban Cleanliness Risk Dashboard</h1>
+
+<div class="form">
+    <input type="number" id="population" placeholder="Population">
+    <input type="number" id="rainfall" placeholder="Rainfall">
+    <input type="number" id="complaints" placeholder="Complaints">
+    <input type="number" id="latitude" placeholder="Latitude">
+    <input type="number" id="longitude" placeholder="Longitude">
+    <button onclick="predictRisk()">Predict</button>
+</div>
+
+<div id="map" style="height:500px;"></div>
+
+<script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+<script src="script.js"></script>
+
+</body>
+</html>
