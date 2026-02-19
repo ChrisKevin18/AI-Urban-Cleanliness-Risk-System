@@ -93,3 +93,16 @@ button:hover {
     height: 400px;
     border-radius: 10px;
 }
+.insights {
+    margin-top: 40px;
+    background: rgba(255,255,255,0.1);
+    padding: 20px;
+    border-radius: 10px;
+}
+
+canvas {
+    background: white;
+    margin: 20px 0;
+    border-radius: 10px;
+}
+
