@@ -1,24 +1,54 @@
-\<!DOCTYPE html>
+<!DOCTYPE html>
 <html>
 <head>
-    <title>Urban Cleanliness Risk Dashboard</title>
+    <title>AI Urban Cleanliness Risk Dashboard</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css"/>
 </head>
 <body>
 
-<h1>AI Urban Cleanliness Risk Dashboard</h1>
-
-<div class="form">
-    <input type="number" id="population" placeholder="Population">
-    <input type="number" id="rainfall" placeholder="Rainfall">
-    <input type="number" id="complaints" placeholder="Complaints">
-    <input type="number" id="latitude" placeholder="Latitude">
-    <input type="number" id="longitude" placeholder="Longitude">
-    <button onclick="predictRisk()">Predict</button>
+<div class="sidebar">
+    <h2>Smart City AI</h2>
+    <ul>
+        <li>Dashboard</li>
+        <li>Heatmap</li>
+        <li>Insights</li>
+        <li>Model Info</li>
+    </ul>
 </div>
 
-<div id="map" style="height:500px;"></div>
+<div class="main">
+
+    <div class="header">
+        <h1>Urban Cleanliness Risk System</h1>
+        <span class="live-dot"></span>
+    </div>
+
+    <div class="cards">
+        <div class="card">
+            <h3>Risk Score</h3>
+            <h2 id="riskScore">--</h2>
+        </div>
+
+        <div class="card">
+            <h3>Risk Level</h3>
+            <h2 id="riskLevel">--</h2>
+        </div>
+
+        <div class="card">
+            <h3>Model Confidence</h3>
+            <h2>92%</h2>
+        </div>
+    </div>
+
+    <div class="form-section">
+        <input type="number" id="longitude" placeholder="Longitude">
+        <button onclick="predictRisk()">Predict Risk</button>
+    </div>
+
+    <div id="map"></div>
+
+</div>
 
 <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
 <script src="script.js"></script>
