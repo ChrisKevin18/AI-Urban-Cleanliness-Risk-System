@@ -1,38 +1,42 @@
 document.addEventListener("DOMContentLoaded", function() {
 
-    // ===== Predict Risk =====
     window.predictRisk = function() {
         let risk = Math.floor(Math.random() * 100);
 
         let scoreElement = document.getElementById("riskScore");
         let levelElement = document.getElementById("riskLevel");
         let suggestionElement = document.getElementById("suggestion");
+        let circle = document.getElementById("progressCircle");
 
         scoreElement.innerText = risk;
 
         let level = "Low";
         let suggestion = "Routine monitoring sufficient.";
 
+        let circumference = 314;
+        let offset = circumference - (risk / 100) * circumference;
+        circle.style.strokeDashoffset = offset;
+
         if (risk > 70) {
             level = "High";
             suggestion = "Deploy 2 garbage trucks within 8 hours.";
-            scoreElement.style.color = "#ff4d4d";
+            circle.style.stroke = "#ff4d4d";
             alert("🚨 High Risk Zone Detected!");
         } 
         else if (risk > 40) {
             level = "Medium";
             suggestion = "Schedule preventive waste collection within 24 hours.";
-            scoreElement.style.color = "#ffa64d";
+            circle.style.stroke = "#ffa64d";
         } 
         else {
-            scoreElement.style.color = "#66cc66";
+            circle.style.stroke = "#66cc66";
         }
 
         levelElement.innerText = level;
         suggestionElement.innerText = suggestion;
     };
 
-    // ===== Live Mode =====
+    // Live Mode
     let interval;
     const liveToggle = document.getElementById("liveMode");
 
@@ -46,8 +50,28 @@ document.addEventListener("DOMContentLoaded", function() {
         });
     }
 
-    // ===== Charts =====
+    // Live Clock
+    setInterval(function() {
+        let now = new Date();
+        document.getElementById("clock").innerText =
+            now.toLocaleTimeString();
+    }, 1000);
 
+    // Leaflet Map
+    var map = L.map('map').setView([12.9716, 77.5946], 12);
+
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution: '© OpenStreetMap contributors'
+    }).addTo(map);
+
+    L.circle([12.9716, 77.5946], {
+        color: 'red',
+        fillColor: '#f03',
+        fillOpacity: 0.5,
+        radius: 500
+    }).addTo(map).bindPopup("High Risk Zone<br>Predicted Overflow: 12 hrs");
+
+    // Charts
     new Chart(document.getElementById("barChart"), {
         type: "bar",
         data: {
@@ -86,7 +110,6 @@ document.addEventListener("DOMContentLoaded", function() {
 
 });
 
-// ===== Dark Mode =====
 function toggleDarkMode() {
     document.body.classList.toggle("dark-mode");
 }

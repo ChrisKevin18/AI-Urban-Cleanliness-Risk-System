@@ -2,12 +2,9 @@
 <html>
 <head>
     <title>AI Urban Cleanliness Risk Dashboard</title>
+
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css"/>
-    <label>
-        <input type="checkbox" id="liveMode"> Live Mode
-    </label>
-    <button onclick="toggleDarkMode()">🌙</button>
 
 </head>
 <body>
@@ -26,55 +23,80 @@
 
     <div class="header">
         <h1>Urban Cleanliness Risk System</h1>
-        <span class="live-dot"></span>
+        <div>
+            <span class="live-dot"></span>
+            <label>
+                <input type="checkbox" id="liveMode"> Live Mode
+            </label>
+            <button onclick="toggleDarkMode()">🌙</button>
+            <div id="clock"></div>
+        </div>
     </div>
 
     <div class="cards">
+
         <div class="card">
             <h3>Risk Score</h3>
-            <h2 id="riskScore">--</h2>
+            <div class="gauge-container">
+                <svg width="120" height="120">
+                    <circle cx="60" cy="60" r="50"
+                        stroke="#ddd"
+                        stroke-width="10"
+                        fill="none"/>
+                    <circle id="progressCircle"
+                        cx="60"
+                        cy="60"
+                        r="50"
+                        stroke="#66cc66"
+                        stroke-width="10"
+                        fill="none"
+                        stroke-dasharray="314"
+                        stroke-dashoffset="314"
+                        transform="rotate(-90 60 60)"/>
+                </svg>
+                <div class="gauge-text" id="riskScore">0</div>
+            </div>
         </div>
 
         <div class="card">
             <h3>Risk Level</h3>
-            <h2 id="riskLevel">--</h2>
+            <h2 id="riskLevel">Low</h2>
         </div>
 
         <div class="card">
             <h3>Model Confidence</h3>
             <h2>92%</h2>
         </div>
+
     </div>
+
     <div class="recommendation">
         <h2>AI Suggested Action</h2>
-        <p id="suggestion">Waiting for prediction...</p>
+        <p id="suggestion">Routine monitoring sufficient.</p>
     </div>
 
-
     <div class="form-section">
-        <input type="number" id="longitude" placeholder="Longitude">
+        <input type="text" id="longitude" placeholder="Longitude">
         <button onclick="predictRisk()">Predict Risk</button>
     </div>
 
     <div id="map"></div>
 
-</div>
-<div class="insights">
-    <h2>Analytics Insights</h2>
-
-    <div class="charts-grid">
-        <div class="chart-card">
-            <canvas id="barChart"></canvas>
-        </div>
-
-        <div class="chart-card">
-            <canvas id="lineChart"></canvas>
-        </div>
-
-        <div class="chart-card">
-            <canvas id="pieChart"></canvas>
+    <div class="insights">
+        <h2>Analytics Insights</h2>
+        <div class="charts-grid">
+            <div class="chart-card">
+                <canvas id="barChart"></canvas>
+            </div>
+            <div class="chart-card">
+                <canvas id="lineChart"></canvas>
+            </div>
+            <div class="chart-card">
+                <canvas id="pieChart"></canvas>
+            </div>
         </div>
     </div>
+
 </div>
 
 <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
