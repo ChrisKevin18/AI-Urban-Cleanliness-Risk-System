@@ -57,14 +57,21 @@ body {
     gap: 20px;
     margin: 20px 0;
 }
-
 .card {
-    background: rgba(255,255,255,0.1);
+    background: rgba(255,255,255,0.12);
     padding: 20px;
-    border-radius: 10px;
+    border-radius: 12px;
     flex: 1;
     text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
+
+.card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+}
+
+
 
 .form-section {
     margin: 20px 0;
@@ -105,4 +112,39 @@ canvas {
     margin: 20px 0;
     border-radius: 10px;
 }
+.recommendation {
+    background: linear-gradient(135deg, #2b5876, #4e4376);
+    padding: 25px;
+    border-radius: 12px;
+    margin-bottom: 20px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+}
 
+
+.dark-mode {
+    background: #121212;
+    color: white;
+}
+.charts-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+    margin-top: 20px;
+}
+
+.chart-card {
+    background: rgba(255,255,255,0.15);
+    padding: 20px;
+    border-radius: 12px;
+    transition: transform 0.3s ease;
+}
+
+.chart-card:hover {
+    transform: translateY(-5px);
+}
+
+canvas {
+    background: white;
+    border-radius: 10px;
+    padding: 10px;
+}

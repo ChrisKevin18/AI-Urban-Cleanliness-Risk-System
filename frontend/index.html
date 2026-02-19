@@ -4,6 +4,11 @@
     <title>AI Urban Cleanliness Risk Dashboard</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css"/>
+    <label>
+        <input type="checkbox" id="liveMode"> Live Mode
+    </label>
+    <button onclick="toggleDarkMode()">🌙</button>
+
 </head>
 <body>
 
@@ -40,6 +45,11 @@
             <h2>92%</h2>
         </div>
     </div>
+    <div class="recommendation">
+        <h2>AI Suggested Action</h2>
+        <p id="suggestion">Waiting for prediction...</p>
+    </div>
+
 
     <div class="form-section">
         <input type="number" id="longitude" placeholder="Longitude">
@@ -52,9 +62,19 @@
 <div class="insights">
     <h2>Analytics Insights</h2>
 
-    <canvas id="barChart"></canvas>
-    <canvas id="lineChart"></canvas>
-    <canvas id="pieChart"></canvas>
+    <div class="charts-grid">
+        <div class="chart-card">
+            <canvas id="barChart"></canvas>
+        </div>
+
+        <div class="chart-card">
+            <canvas id="lineChart"></canvas>
+        </div>
+
+        <div class="chart-card">
+            <canvas id="pieChart"></canvas>
+        </div>
+    </div>
 </div>
 
 <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
